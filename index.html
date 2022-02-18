@@ -1,19 +1,86 @@
 <script>
+    let playerpoint = 0
+    let computerpoint = 0
+    let tiegames = 0
+    let whowins= 0 //0=haven't played. 1=Player wins. 2=Computer wins. 3=Tie
+//This is the main function - "Playround" - Starts the game (to 5 wins)
 function playround(){
+    for (let i = 0; i < 5; i++) {
+    rungame(playerhand(),compturn())
+    console.log("Player has " + playerpoint + " points. Computer has " + computerpoint + " points. There have been " + tiegames + " tie games.")
+}
+if(i=5){
+    console.log("That's 5 turns! Game over.")
+}
+}
+
+///This function is the player's hand
+
+function playerhand(){
     let rps = prompt("Rock, Paper, or Scissors?");
-    console.log(rps);
 rps = rps.toLowerCase();
-console.log(rps);
 if (rps==="rock"||rps==="paper"||rps==="scissors"){
-    console.log("Good work my homie");
+return(rps)
 } else{
-console.log("Incorrect Type. Input Again.");
+console.log("Incorrect Type. Input Again."); //This is a prompt that get's shown when something is typed that ISN'T rock/paper/scissors
+playround();
+}
 }
 
+//This function plays the computer's hand
+function compturn(){
+    let computerrps=Math.floor(Math.random()*3);
+    let computerturntext="running"
+if(computerrps===0){
+computerturntext="rock"
+}
+if(computerrps===1){
+    computerturntext="paper"
+}
+if(computerrps===2){
+    computerturntext="scissors"
+}
+return(computerturntext)
 }
 
+//This function plays both hands against eachother
+
+function rungame(playergo,compgo){
+
+if ((playergo === "rock") && (compgo === "rock")){
+    (whowins=3)}
+    else {if ((playergo === "rock") && (compgo === "paper"))
+{(whowins=2)}
+else {if ((playergo === "rock") && (compgo === "scissors"))
+{(whowins=1)}
 
 
+else {if ((playergo === "paper") && (compgo === "rock"))
+{(whowins=1)}
+else {if ((playergo === "paper") && (compgo === "paper"))
+{(whowins=3)}
+else {if ((playergo === "paper") && (compgo === "scissors"))
+{(whowins=2)}
 
+else {if ((playergo === "scissors") && (compgo === "rock"))
+{(whowins=2)}
+else {if ((playergo === "scissors") && (compgo === "paper"))
+{(whowins=1)}
+else {if ((playergo === "scissors") && (compgo === "scissors"))
+{(whowins=3)}
+
+}}}}}}}}
+
+if(whowins===1){
+(messagedisplay="You chose " + playergo + ". Computer chose " + compgo + ". Player Wins");(playerpoint = (playerpoint+1));}
+else {if(whowins===2)
+{(messagedisplay="You chose " + playergo + ". Computer chose " + compgo + ". Computer Wins");(computerpoint = (computerpoint+1));}
+else {if(whowins===3)
+{(messagedisplay="You chose " + playergo + ". Computer chose " + compgo + ". It's a tie!");(tiegames = (tiegames+1));}
+
+}}
+console.log(messagedisplay)
+return(whowins)
+}
 
 </script>
